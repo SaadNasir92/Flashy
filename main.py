@@ -3,6 +3,7 @@ import pandas as pd
 import random
 # --------------------------------Constants----------------------------------------#
 
+FILE_TO_LEARN = 'freq_list.txt'
 BACKGROUND_COLOR = "#B1DDC6"
 TOP_WORD_FONT = ('Ariel', 30, 'italic')
 BOT_WORD_FONT = ('Ariel', 40, 'bold')
@@ -13,7 +14,7 @@ FLIP_SIDE = 1
 try:
     data_frame = pd.read_csv('words_to_learn.csv')
 except FileNotFoundError:
-    data_frame = pd.read_csv('freq_list.txt')
+    data_frame = pd.read_csv(FILE_TO_LEARN)
 finally:
     flash_card_data = {row.Japanese: row.English for (word, row) in data_frame.iterrows()}
     japanese_words = [key for key in flash_card_data]
@@ -26,7 +27,6 @@ def get_random():
 
 
 def flip():
-    print(data_frame)
     global FLIP_SIDE
     FLIP_SIDE *= -1
     if FLIP_SIDE == -1:
@@ -54,7 +54,6 @@ def correct_press():
     data_frame.drop(index_to_drop, inplace=True)
     data_frame.to_csv('words_to_learn.csv', index=False)
     next_card()
-    data_frame.to_csv('words_to_learn.csv', index=False)
 
 
 # --------------------------------UI----------------------------------------#
@@ -79,7 +78,6 @@ next_card()
 # ------Buttons------#
 right_image = tk.PhotoImage(file='images/right.png')
 wrong_image = tk.PhotoImage(file='images/wrong.png')
-flip_image = tk.PhotoImage(file='images/flip.png')
 
 right_button = tk.Button(image=right_image, highlightthickness=0, command=correct_press)
 right_button.grid(row=1, column=2)
