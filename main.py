@@ -3,7 +3,7 @@ import pandas as pd
 import random
 # --------------------------------Constants----------------------------------------#
 
-FILE_TO_LEARN = 'freq_list.txt'
+FILE_TO_LEARN = './data/freq_list.txt'
 BACKGROUND_COLOR = "#B1DDC6"
 TOP_WORD_FONT = ('Ariel', 30, 'italic')
 BOT_WORD_FONT = ('Ariel', 40, 'bold')
@@ -12,7 +12,7 @@ FLIP_SIDE = 1
 # --------------------------------Datafile----------------------------------------#
 
 try:
-    data_frame = pd.read_csv('words_to_learn.csv')
+    data_frame = pd.read_csv('./data/words_to_learn.csv')
 except FileNotFoundError:
     data_frame = pd.read_csv(FILE_TO_LEARN)
 finally:
@@ -52,7 +52,7 @@ def next_card():
 def correct_press():
     index_to_drop = data_frame[data_frame.Japanese == CURRENT_CARD].index
     data_frame.drop(index_to_drop, inplace=True)
-    data_frame.to_csv('words_to_learn.csv', index=False)
+    data_frame.to_csv('./data/words_to_learn.csv', index=False)
     next_card()
 
 
