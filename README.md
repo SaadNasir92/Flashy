@@ -24,14 +24,18 @@ Flashy is a versatile flashcard application designed to facilitate vocabulary le
     ```bash
     pip install pandas
     ```
+3. **Navigate to the directory:**
+    ```bash
+    cd Flashy
+    ```
 3. **Run the application:**
     ```bash
     python main.py
-
+    ```
 ## Customizing the Flashcard Data
 To adapt Flashy for different language pairs or vocabulary lists:
 
-1. Prepare your vocabulary list in a CSV format with two columns: Front (for the question) and Back (for the answer).
+1. Prepare your vocabulary list in a CSV format with two columns: Name of Target Language for eg. Japanese (for the question) and Native language for eg. English (for the answer). Please see format of initial file for exact format.
 2. Replace the `FILENAME` variable with your CSV or ',' separated .txt file. Make sure to maintain the column headers as TARGET LANGUAGE NAME and NATIVE LANGUAGE for eg. my Japanese to English default shows ``Japanese,English``.
 3. If it's your first time running with a new list, or want to start a new list, ensure the application reads your CSV by removing any existing `'words_to_learn.csv'` file. This triggers the app to rebuild this file based on your new CSV.
 4. If you want to revert to a previously saved word list, simply replace the current `'words_to_learn.csv'` with your backup copy. This allows you to easily switch between different sets of vocabulary as needed.
